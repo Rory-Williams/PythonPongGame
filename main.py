@@ -5,6 +5,7 @@ from score import Score
 from ball import Ball
 import time
 
+# set up dimensions
 court_width = 700
 court_height = 500
 l_court = -court_width / 2
@@ -12,12 +13,14 @@ r_court = court_width / 2
 t_court = court_height/2
 b_court = -court_height/2
 
+# set up screen
 screen = Screen()
 screen.setup(width=court_width+100, height=court_height+150)
 screen.bgcolor('black')
 screen.title('Pong Game')
 screen.tracer(0)
 
+# set up score boards
 left_score = Score()
 left_score.position(-60, t_court+20)
 right_score = Score()
@@ -26,18 +29,20 @@ net = Net()
 ball = Ball()
 speed = 0.07
 
+# set up bats
 bat_length = 100
 bat_indent = 20
 left_bat = Bat((l_court+bat_indent, 0), bat_length)
 right_bat = Bat((r_court-bat_indent, 0), bat_length)
 
-
+# set up controls
 screen.listen()
 screen.onkey(right_bat.up, 'Up')
 screen.onkey(right_bat.down, 'Down')
 screen.onkey(left_bat.up, 'w')
 screen.onkey(left_bat.down, 's')
 
+# main game loop
 game_on = True
 while game_on:
     screen.update()
